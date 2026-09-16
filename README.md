@@ -11,6 +11,6 @@ Live site: published via GitHub Pages from this repository's `main` branch.
 - `july14/` — July 14 growth curve report (HTML + Rmd source), testing FLC concentrations 8&ndash;128 &mu;g/mL.
 - `combined/` — combined dose-response IC50 analysis (HTML + Rmd source) of the July 9 and July 14 data, comparing N-lim to C-lim media.
 
-Growth assays were run for 72 hours because slow growth was anticipated in the nutrient-limited media. The tested FLC concentration range was raised between the July 9 and July 14 assays because the first assay did not show a clear dropoff in effectiveness as concentration increased.
+Growth assays were run for 72 hours because slow growth was anticipated in the nutrient-limited media. The tested FLC concentration range was raised between the July 9 and July 14 assays because there was no clear drop off in efficiency in first assay as concentration increased.
 
 Dose-response method adapted from the [Babraham Bioinformatics IC50 tutorial](https://www.youtube.com/watch?v=yZRvzYsWqJw).
