@@ -1,6 +1,6 @@
 # Growth Analysis in C-lim and N-lim Media
 
-Website presenting fluconazole (FLC) growth curve assays in carbon-limited (C-lim) and nitrogen-limited (Gln-lim / N-lim) media, run over two experiment dates, followed by a combined dose-response analysis.
+Presentation of fluconazole (FLC) growth curve assays in carbon-limited (C-lim) and nitrogen-limited (Gln-lim / N-lim) media, run over two experiment dates, followed by a combined dose-response analysis.
 
 Live site: published via GitHub Pages from this repository's `main` branch.
 
