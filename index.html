@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Analysis in C-lim and N-lim Media</title>
+<style>
+  :root {
+    --purple-900: #7d57b3;
+    --purple-700: #9873c9;
+    --purple-600: #ab8ad4;
+    --purple-500: #c2a5e2;
+    --purple-100: #f1e8fb;
+    --cream-100: #fbf6ec;
+    --cream-200: #f4ead4;
+    --cream-300: #ecdcb8;
+    --text-main: #3a2c4a;
+    --text-muted: #7a6b8a;
+    --shadow: 0 8px 24px rgba(106, 68, 160, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream-100);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--purple-700), var(--purple-500));
+    color: var(--cream-100);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+
+  header .byline {
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+    color: var(--cream-200);
+    font-style: italic;
+  }
+
+  header .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    color: var(--purple-100);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  header h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+
+  header p {
+    max-width: 46rem;
+    margin: 0 auto;
+    color: var(--cream-200);
+    font-size: 1.05rem;
+  }
+
+  main {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  section.block {
+    background: #fff;
+    border: 1px solid var(--cream-300);
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem;
+  }
+
+  section.block h2 {
+    margin-top: 0;
+    color: var(--purple-700);
+    font-size: 1.3rem;
+  }
+
+  section.block ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  section.block li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  section.block p {
+    color: var(--text-muted);
+  }
+
+  section.block code {
+    background: var(--purple-100);
+    color: var(--purple-900);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  h2.group-title {
+    color: var(--purple-700);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 2.5rem 0 1rem;
+    border-bottom: 2px solid var(--cream-300);
+    padding-bottom: 0.5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--cream-300);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card .tag {
+    align-self: flex-start;
+    background: var(--purple-100);
+    color: var(--purple-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+
+  .card h3 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+
+  .card .links {
+    margin-top: auto;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    transition: transform 0.08s ease, box-shadow 0.15s ease;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-primary {
+    background: var(--purple-600);
+    color: var(--cream-100);
+  }
+
+  .btn-primary:hover { background: var(--purple-700); }
+
+  .btn-secondary {
+    background: var(--cream-200);
+    color: var(--purple-700);
+    border: 1px solid var(--purple-100);
+  }
+
+  .btn-secondary:hover { background: var(--cream-300); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem 3rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  footer a { color: var(--purple-600); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Undergraduate Thesis &middot; Growth Assay Analysis</div>
+  <h1>Growth Analysis in C-lim and N-lim Media</h1>
+  <p class="byline">By Alyssah Mack and Saaz Sakrikar</p>
+  <p>
+    Growth curve assays measuring the effect of fluconazole (FLC) on yeast
+    grown in carbon-limited (C-lim) and nitrogen-limited (Gln-lim / N-lim)
+    media, across two experiment dates (July 9 and July 14), followed by a
+    combined dose-response analysis of both datasets.
+  </p>
+</header>
+
+<main>
+
+  <h2 class="group-title">Growth assays</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">July 9</span>
+      <h3>Growth Curves &middot; C-lim &amp; Gln-lim</h3>
+      <p>
+        Tecan 96-well plate growth curves over 72 hours, testing FLC
+        concentrations of 2, 4, 8, 16, and 32 &mu;g/mL in C-lim and Gln-lim
+        media.
+      </p>
+      <div class="links">
+        <a class="btn btn-primary" href="july9/growthcurves_media_July9.html">View report</a>
+        <a class="btn btn-secondary" href="july9/growthcurves_media_July9.Rmd">View Rmd source</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="tag">July 14</span>
+      <h3>Growth Curves &middot; C-lim &amp; Gln-lim</h3>
+      <p>
+        Tecan 96-well plate growth curves over 72 hours, testing a higher
+        range of FLC concentrations (8, 16, 32, 64, and 128 &mu;g/mL) in
+        C-lim and Gln-lim media.
+      </p>
+      <div class="links">
+        <a class="btn btn-primary" href="july14/growthcurves_media_July14.html">View report</a>
+        <a class="btn btn-secondary" href="july14/growthcurves_media_July14.Rmd">View Rmd source</a>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="group-title">Combined analysis</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">N-lim vs C-lim</span>
+      <h3>Dose-Response &middot; 72 hrs</h3>
+      <p>
+        IC50 dose-response model fit to the combined July 9 and July 14
+        data, comparing growth (area under the curve) in N-lim media to
+        C-lim media across the full range of tested FLC concentrations.
+      </p>
+      <div class="links">
+        <a class="btn btn-primary" href="combined/Doseresponse_72hrs_NlimvsClim.html">View report</a>
+        <a class="btn btn-secondary" href="combined/Doseresponse_72hrs_NlimvsClim.Rmd">View Rmd source</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>Summary</h2>
+    <p>
+      Growth assays were run for 72 hours rather than the standard 24,
+      because slow growth was anticipated in the nutrient-limited C-lim and
+      Gln-lim (N-lim) media.
+    </p>
+    <p>
+      The FLC concentrations tested were changed between the two assays:
+      the July 9 assay used a lower range (2&ndash;32 &mu;g/mL), but because
+      there was not a clear dropoff in effectiveness as the concentration
+      increased, the July 14 assay shifted to a higher range
+      (8&ndash;128 &mu;g/mL) to better capture the dose-response curve.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  Dose-response method adapted from the
+  <a href="https://www.youtube.com/watch?v=yZRvzYsWqJw" target="_blank" rel="noopener">Babraham Bioinformatics IC50 tutorial</a>.
+</footer>
+
+</body>
+</html>
